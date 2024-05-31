@@ -18,6 +18,7 @@ public class AgendaController {
     private final String ELIMINAR_CONTACTO_SQL="DELETE FROM contactos WHERE correo = ?";
     private final String MODIFICAR_CONTACTO_SQL="UPDATE contactos SET DNI = COALESCE(?, DNI), nombre = COALESCE(?, nombre), apellido = COALESCE(?, apellido), correo = COALESCE(?, correo), direccion = COALESCE(?, direccion), localidad = COALESCE(?, localidad) WHERE correo = ?";
     private final String MOSTRAR_TODOS_CONTACTOS_SQL="SELECT * FROM contactos";
+    private final String MOSTRAR_CONTACTOS_POR_CORREO_SQL = "SELECT * FROM contactos WHERE correo = ?";
 
     public void crearContacto(String DNI, String nombre, String apellido, String correo, String direccion, String localidad){
 
@@ -148,5 +149,29 @@ public class AgendaController {
             e.printStackTrace();
         }
         return false;
+    }
+      // Método para obtener contactos por correo
+    public List<Contactos> contactoMostrarPorCorreo(String correo) {
+        List<Contactos> contactos = new ArrayList<>();
+        try (Connection conexion = BD.getConnection();
+             PreparedStatement instruccion = conexion.prepareStatement(MOSTRAR_CONTACTOS_POR_CORREO_SQL)) {
+            instruccion.setString(1, correo);
+            ResultSet resultado = instruccion.executeQuery();
+            while (resultado.next()) {
+                Contactos contacto = new Contactos(
+                    resultado.getInt("id"),
+                    resultado.getString("DNI"),
+                    resultado.getString("nombre"),
+                    resultado.getString("apellido"),
+                    resultado.getString("correo"),
+                    resultado.getString("direccion"),
+                    resultado.getString("localidad")
+                );
+                contactos.add(contacto);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return contactos;
     }
 }
