@@ -48,6 +48,25 @@ public class LoginView extends JFrame {
         });
 
         loginPanel.add(loginButton);
+
+        JButton registerButton = new JButton("Register");
+        registerButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new RegisterView().setVisible(true); // Abre la vista de registro
+                dispose();   
+            }
+        });
+    
+        loginPanel.add(registerButton);
+        JButton registerButton = new JButton("Register");
+        registerButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new RegisterView().setVisible(true); // Abre la vista de registro
+                dispose();   
+            }
+        });
+    
+        loginPanel.add(registerButton);
         add(loginPanel, BorderLayout.CENTER);
     }
 
