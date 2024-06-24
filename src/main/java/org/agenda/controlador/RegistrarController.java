@@ -12,7 +12,7 @@ import org.agenda.modelo.Usuarios;
 
 public class RegistrarController {
 
-    private String INSERTAR_USER_SQL = "INSERT INTO user ( nombre, contraseña, correo) VALUES (?, ?, ?)";
+    private String INSERTAR_USER_SQL = "INSERT INTO usuarios ( nombre, contraseña, correo) VALUES (?, ?, ?)";
 
     
     public boolean registrarUsuario(String dni, String nombre, String apellido, String contraseña, String correo, String direccion,
@@ -33,23 +33,23 @@ public class RegistrarController {
 
         String passwordHash = validacion.passwordHash(usuario.getContraseña());
         usuario.setContraseña(passwordHash);
-        try (
-            Connection conexion = BD.getConnection();
-            PreparedStatement instruccion = conexion.prepareStatement(INSERTAR_USER_SQL)) {
-            instruccion.setString(1, usuario.getNombre());
-            instruccion.setString(2, usuario.getContraseña());
-            instruccion.setString(3, usuario.getCorreo());
-            instruccion.executeUpdate();
-            registrado = true;
+        try (Connection conexion = BD.getConnection()) {
+            try (PreparedStatement instruccion = conexion.prepareStatement(INSERTAR_USER_SQL)) {
+
+                instruccion.setString(1, usuario.getNombre());
+                instruccion.setString(2, usuario.getContraseña());
+                instruccion.setString(3, usuario.getCorreo());
+
+                instruccion.executeUpdate();
+                registrado = true;
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    
-        if (registrado) {
-            JOptionPane.showMessageDialog(null, "Registrado.", "Completado correctamente", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "Registro fallido. Por favor intentelo nuevamente.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+
     
         return registrado;
     }

@@ -1,12 +1,12 @@
 package org.agenda.modelo;
 
-public class mensajesRelacion {
+public class MensajesRelacion {
     private int idMensaje;
     private int idEmisor;
     private int idReceptor;
 
     
-    public mensajesRelacion(int idMensaje, int idEmisor, int idReceptor) {
+    public MensajesRelacion(int idMensaje, int idEmisor, int idReceptor) {
         this.idMensaje = idMensaje;
         this.idEmisor = idEmisor;
         this.idReceptor = idReceptor;

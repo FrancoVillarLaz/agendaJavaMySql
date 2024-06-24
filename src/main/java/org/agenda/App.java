@@ -1,9 +1,10 @@
 package org.agenda;
 
 
-import org.agenda.gui.LoginGui;
 
 import javax.swing.*;
+
+import org.agenda.vista.LoginView;
 
 /**
  * Hello world!
@@ -12,8 +13,7 @@ import javax.swing.*;
 public class App {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            LoginGui login = new LoginGui();
-            login.setVisible(true); // Mostrar la ventana de login
+            new LoginView().setVisible(true); // Mostrar la ventana de login
         });
     }
     }

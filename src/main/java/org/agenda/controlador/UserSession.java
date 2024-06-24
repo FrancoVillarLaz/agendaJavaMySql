@@ -1,16 +1,15 @@
 package org.agenda.controlador;
 
 import java.util.List;
-
 import org.agenda.modelo.Contactos;
 
 public class UserSession {
     private static UserSession instance;
     private String correo;
+    private int usuarioId;
     private List<Contactos> contactos;
 
-    private UserSession() {
-    }
+    private UserSession() {}
 
     public static UserSession getInstance() {
         if (instance == null) {
@@ -27,6 +26,14 @@ public class UserSession {
         this.correo = correo;
     }
 
+    public int getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(int usuarioId) {
+        this.usuarioId = usuarioId;
+    }
+
     public List<Contactos> getContactos() {
         return contactos;
     }
@@ -37,6 +44,7 @@ public class UserSession {
 
     public void logout() {
         correo = null;
+        usuarioId = 0;
         contactos = null;
         instance = null;
     }

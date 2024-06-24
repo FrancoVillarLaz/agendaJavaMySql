@@ -7,15 +7,28 @@ public class Mensajes {
     private String asunto;
     private String mensaje;
     private Date fechaHora;
-
-
+    private String emisorNombre;
+    private int receptor;
     
-    public Mensajes(int id, String asunto, String mensaje, Date fechaHora) {
-        this.id = id;
+    public Mensajes(String asunto, String mensaje) {
+        this.asunto = asunto;
+        this.mensaje = mensaje;
+    }
+    public Mensajes(int id, String asunto, String mensaje, Date fechaHora, String emisorNombre) {
+        this.id =id;
         this.asunto = asunto;
         this.mensaje = mensaje;
         this.fechaHora = fechaHora;
+        this.emisorNombre = emisorNombre;
     }
+    public Mensajes(String asunto, String mensaje, Date fechaHora, String emisorNombre, int receptor) {
+        this.asunto = asunto;
+        this.mensaje = mensaje;
+        this.fechaHora = fechaHora;
+        this.emisorNombre = emisorNombre;
+        this.receptor = receptor;
+    }
+
     public int getId() {
         return id;
     }
@@ -40,6 +53,17 @@ public class Mensajes {
     public void setFechaHora(Date fechaHora) {
         this.fechaHora = fechaHora;
     }
-
+    public int getReceptor() {
+        return receptor;
+    }
+    public void setReceptor(int receptor) {
+        this.receptor = receptor;
+    }
     
+    public String getEmisorNombre() {
+        return emisorNombre;
+    }
+    public void setEmisorNombre(int emisor) {
+        this.emisorNombre = emisorNombre;
+    }
 }

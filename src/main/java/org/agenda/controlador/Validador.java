@@ -41,5 +41,6 @@ public class Validador {
         Matcher matcher = pattern.matcher(correo);
         return matcher.matches();
     }
+    
     public String passwordHash(String password) {return BCrypt.hashpw(password, BCrypt.gensalt());}
 }

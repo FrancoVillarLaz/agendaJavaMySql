@@ -1,27 +1,18 @@
 package org.agenda.modelo;
-
 public class UsuarioContacto {
-    private String DNIusuario;
-    private String idContacto;
-    
-    public UsuarioContacto(String dNIusuario, String idContacto) {
-        DNIusuario = dNIusuario;
+    private int idUsuario;
+    private int idContacto;
+
+    public UsuarioContacto(int idUsuario, int idContacto) {
+        this.idUsuario = idUsuario;
         this.idContacto = idContacto;
     }
 
-    
-    public String getDNIusuario() {
-        return DNIusuario;
+    public int getIdUsuario() {
+        return idUsuario;
     }
-    public void setDNIusuario(String dNIusuario) {
-        DNIusuario = dNIusuario;
-    }
-    public String getIdContacto() {
+
+    public int getIdContacto() {
         return idContacto;
     }
-    public void setIdContacto(String idContacto) {
-        this.idContacto = idContacto;
-    }
-
-    
 }
