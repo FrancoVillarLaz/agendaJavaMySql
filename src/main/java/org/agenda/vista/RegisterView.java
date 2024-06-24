@@ -81,7 +81,15 @@ public class RegisterView extends JFrame {
             }
         });
         registerPanel.add(registerButton);
-
+        JButton volverButton = new JButton("Volver");
+        volverButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new LoginView().setVisible(true); // Abre la vista de registro
+                dispose();   
+            }
+        });
+    
+        registerPanel.add(registerButton);
         add(registerPanel, BorderLayout.CENTER);
     }
 
