@@ -1,2 +1,2 @@
 # agendaJavaMySql
-Agenda de contactos con chat incluido
+Agenda de contactos con base de datos
